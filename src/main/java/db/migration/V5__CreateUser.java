@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 
 /**
- * @auther takahashi
+ * @author takahashi
  */
 public class V5__CreateUser implements JdbcMigration {
     @Override

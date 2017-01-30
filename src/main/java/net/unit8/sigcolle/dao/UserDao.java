@@ -9,7 +9,7 @@ import org.seasar.doma.Select;
 import java.util.List;
 
 /**
- * @auther takahashi
+ * @author takahashi
  */
 @Dao(config = DomaConfig.class)
 public interface UserDao {

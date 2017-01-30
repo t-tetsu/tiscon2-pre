@@ -11,7 +11,7 @@ import javax.validation.constraints.DecimalMin;
 import java.util.List;
 
 /**
- * @auther takahashi
+ * @author takahashi
  */
 @Data
 public class LoginForm extends FormBase {
