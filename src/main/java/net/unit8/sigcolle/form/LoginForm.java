@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import enkan.collection.Multimap;
 import enkan.component.doma2.DomaProvider;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;

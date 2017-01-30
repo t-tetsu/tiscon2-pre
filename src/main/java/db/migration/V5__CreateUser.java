@@ -1,9 +1,9 @@
 package db.migration;
 
-import org.flywaydb.core.api.migration.jdbc.JdbcMigration;
-
 import java.sql.Connection;
 import java.sql.Statement;
+
+import org.flywaydb.core.api.migration.jdbc.JdbcMigration;
 
 /**
  * @author takahashi

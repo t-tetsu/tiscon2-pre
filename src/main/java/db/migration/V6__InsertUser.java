@@ -1,16 +1,9 @@
 package db.migration;
 
-import org.flywaydb.core.api.migration.jdbc.JdbcMigration;
-import org.pegdown.Extensions;
-import org.pegdown.PegDownProcessor;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.stream.Collectors;
+
+import org.flywaydb.core.api.migration.jdbc.JdbcMigration;
 
 /**
  * @author kawasima
@@ -21,7 +14,7 @@ public class V6__InsertUser implements JdbcMigration {
         String sql = "INSERT INTO user(user_id, first_name, last_name, email, pass) " +
                 "VALUES(?,?,?,?,?)";
 
-        try(PreparedStatement stmt = connection.prepareStatement(sql)) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setLong(1, 0L);
             stmt.setString(2, "kawasima");
             stmt.setString(3, "");
