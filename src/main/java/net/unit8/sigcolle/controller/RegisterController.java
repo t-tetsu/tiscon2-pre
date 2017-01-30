@@ -66,13 +66,11 @@ public class RegisterController {
         userDao.insert(user);
 
         Session session = new Session();
-        String name = form.getLastName() + " " + form.getFirstName();
-        session.put("name", name);
-
         User loginUser = userDao.selectByEmail(form.getEmail());
-        session.put("userId", loginUser.getUserId());
-
-        session.put("principal", new LoginUserPrincipal());
+        session.put(
+                "principal",
+                new LoginUserPrincipal(loginUser.getUserId(), loginUser.getLastName() + " " + loginUser.getFirstName())
+        );
 
         return builder(redirect("/", SEE_OTHER))
                 .set(HttpResponse::setSession, session)

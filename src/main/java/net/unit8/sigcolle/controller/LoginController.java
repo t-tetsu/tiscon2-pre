@@ -1,5 +1,7 @@
 package net.unit8.sigcolle.controller;
 
+import java.security.Principal;
+
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
@@ -64,9 +66,10 @@ public class LoginController {
             );
         }
         Session session = new Session();
-        session.put("name", user.getLastName() + " " + user.getFirstName());
-        session.put("userId", user.getUserId());
-        session.put("principal", new LoginUserPrincipal());
+        session.put(
+                "principal",
+                new LoginUserPrincipal(user.getUserId(), user.getLastName() + " " + user.getFirstName())
+        );
 
         return builder(redirect("/", SEE_OTHER))
                 .set(HttpResponse::setSession, session)
