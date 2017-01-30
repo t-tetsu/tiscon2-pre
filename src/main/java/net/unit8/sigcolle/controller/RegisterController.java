@@ -53,9 +53,7 @@ public class RegisterController {
 
         // メールアドレス重複チェック
         if (userDao.countByEmail(form.getEmail()) != 0) {
-            Multimap errors = Multimap.empty();
-            errors.add("email", EMAIL_ALREADY_EXISTS);
-            form.setErrors(errors);
+            form.setErrors(Multimap.of("email", EMAIL_ALREADY_EXISTS));
             return templateEngine.render("register",
                     "user", form
             );

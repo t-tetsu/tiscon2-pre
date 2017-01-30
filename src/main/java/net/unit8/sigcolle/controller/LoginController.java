@@ -55,8 +55,7 @@ public class LoginController {
         try {
             user = userDao.selectByEmail(form.getEmail());
         } catch (NoResultException e) {
-            errors.add("error", INVALID_USERNAME_OR_PASSWORD);
-            form.setErrors(errors);
+            form.setErrors(Multimap.of("error", INVALID_USERNAME_OR_PASSWORD));
             return templateEngine.render("login",
                     "login", form
             );
@@ -64,8 +63,7 @@ public class LoginController {
 
         // パスワードチェック
         if (!form.getPass().equals(user.getPass())) {
-            errors.add("error", INVALID_USERNAME_OR_PASSWORD);
-            form.setErrors(errors);
+            form.setErrors(Multimap.of("error", INVALID_USERNAME_OR_PASSWORD));
             return templateEngine.render("login",
                     "login", form
             );
