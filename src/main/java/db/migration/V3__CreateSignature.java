@@ -8,7 +8,7 @@ import org.flywaydb.core.api.migration.jdbc.JdbcMigration;
 /**
  * @author kawasima
  */
-public class V2__CreateSignature implements JdbcMigration {
+public class V3__CreateSignature implements JdbcMigration {
     @Override
     public void migrate(Connection connection) throws Exception {
         try (Statement stmt = connection.createStatement()) {
@@ -17,6 +17,7 @@ public class V2__CreateSignature implements JdbcMigration {
                     "name VARCHAR(30) NOT NULL," +
                     "signature_comment CLOB," +
                     "campaign_id INTEGER NOT NULL," +
+                    "FOREIGN KEY (campaign_id) REFERENCES campaign(campaign_id)" +
                     ")"
             );
         }

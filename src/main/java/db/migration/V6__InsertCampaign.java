@@ -15,7 +15,7 @@ import org.pegdown.PegDownProcessor;
 /**
  * @author kawasima
  */
-public class V4__InsertCampaign implements JdbcMigration {
+public class V6__InsertCampaign implements JdbcMigration {
     private String read(InputStream in) throws IOException {
         try (BufferedReader buf = new BufferedReader(new InputStreamReader(in))) {
             return buf.lines().collect(Collectors.joining("\n"));
