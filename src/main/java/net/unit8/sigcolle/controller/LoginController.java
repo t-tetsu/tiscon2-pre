@@ -8,7 +8,7 @@ import enkan.component.doma2.DomaProvider;
 import enkan.data.HttpResponse;
 import enkan.data.Session;
 import kotowari.component.TemplateEngine;
-import net.unit8.sigcolle.auth.LoginPrincipal;
+import net.unit8.sigcolle.auth.LoginUserPrincipal;
 import net.unit8.sigcolle.dao.UserDao;
 import net.unit8.sigcolle.form.LoginForm;
 import net.unit8.sigcolle.model.User;
@@ -38,7 +38,7 @@ public class LoginController {
 
     // ログイン処理
     @Transactional
-    public HttpResponse login(LoginForm form, Session session) {
+    public HttpResponse login(LoginForm form) {
 
         UserDao userDao = domaProvider.getDao(UserDao.class);
         User user;
@@ -63,12 +63,10 @@ public class LoginController {
                     "login", form
             );
         }
-        if (session == null) {
-            session = new Session();
-        }
+        Session session = new Session();
         session.put("name", user.getLastName() + " " + user.getFirstName());
         session.put("userId", user.getUserId());
-        session.put("principal", new LoginPrincipal());
+        session.put("principal", new LoginUserPrincipal());
 
         return builder(redirect("/", SEE_OTHER))
                 .set(HttpResponse::setSession, session)

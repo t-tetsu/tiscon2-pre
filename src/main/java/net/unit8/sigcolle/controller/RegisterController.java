@@ -8,6 +8,7 @@ import enkan.component.doma2.DomaProvider;
 import enkan.data.HttpResponse;
 import enkan.data.Session;
 import kotowari.component.TemplateEngine;
+import net.unit8.sigcolle.auth.LoginUserPrincipal;
 import net.unit8.sigcolle.dao.UserDao;
 import net.unit8.sigcolle.form.UserForm;
 import net.unit8.sigcolle.model.User;
@@ -36,7 +37,7 @@ public class RegisterController {
 
     // ユーザ登録処理
     @Transactional
-    public HttpResponse register(UserForm form, Session session) {
+    public HttpResponse register(UserForm form) {
 
         if (form.hasErrors()) {
             return templateEngine.render("register",
@@ -64,14 +65,14 @@ public class RegisterController {
                 .build();
         userDao.insert(user);
 
-        if (session == null) {
-            session = new Session();
-        }
+        Session session = new Session();
         String name = form.getLastName() + " " + form.getFirstName();
         session.put("name", name);
 
         User loginUser = userDao.selectByEmail(form.getEmail());
         session.put("userId", loginUser.getUserId());
+
+        session.put("principal", new LoginUserPrincipal());
 
         return builder(redirect("/", SEE_OTHER))
                 .set(HttpResponse::setSession, session)
