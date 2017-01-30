@@ -11,7 +11,7 @@ import kotowari.system.KotowariCommandRegister;
  */
 public class ReplMain {
     public static void main(String[] args) throws Exception {
-        PseudoRepl repl = new PseudoRepl(MyExampleSystemFactory.class.getName());
+        PseudoRepl repl = new PseudoRepl(SigColleSystemFactory.class.getName());
         ReplBoot.start(repl,
                 //new ScaffoldCommandRegister(),
                 new KotowariCommandRegister(),
