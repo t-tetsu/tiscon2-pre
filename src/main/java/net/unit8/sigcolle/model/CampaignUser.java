@@ -9,6 +9,7 @@ import org.seasar.doma.GenerationType;
 import org.seasar.doma.Id;
 
 /**
+ * campaignテーブルとuserテーブル両方から値を受け取るDTO.
  * @author blackawa
  */
 @Entity

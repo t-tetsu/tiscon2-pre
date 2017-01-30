@@ -44,6 +44,12 @@ public class CampaignController {
         );
     }
 
+    /**
+     * キャンペーン詳細画面表示.
+     * @param form URLパラメータ
+     * @param flash flash scope session
+     * @return HttpResponse
+     */
     public HttpResponse index(CampaignForm form, Flash flash) {
         if (form.hasErrors()) {
             return builder(HttpResponse.of("Invalid"))
@@ -56,6 +62,11 @@ public class CampaignController {
                 (String) some(flash, Flash::getValue).orElse(null));
     }
 
+    /**
+     * 署名の追加処理.
+     * @param form 画面入力された署名情報.
+     * @return HttpResponse
+     */
     @Transactional
     public HttpResponse sign(SignatureForm form) {
         if (form.hasErrors()) {
@@ -74,10 +85,18 @@ public class CampaignController {
                 .build();
     }
 
+    /**
+     * 新規キャンペーン作成画面表示.
+     * @return HttpResponse
+     */
     public HttpResponse createForm() {
         return templateEngine.render("signature/new");
     }
 
+    /**
+     * 新規キャンペーン作成処理.
+     * @return HttpResponse
+     */
     public HttpResponse create() {
         // TODO: create campaign
         return builder(redirect("/", SEE_OTHER)).build();

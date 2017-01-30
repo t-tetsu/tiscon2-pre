@@ -7,6 +7,9 @@ import enkan.data.HttpResponse;
 import kotowari.component.TemplateEngine;
 import net.unit8.sigcolle.dao.CampaignDao;
 
+/**
+ * @author takahashi
+ */
 public class IndexController {
     @Inject
     private TemplateEngine templateEngine;
