@@ -1,7 +1,5 @@
 package net.unit8.sigcolle.controller;
 
-import java.io.IOException;
-
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
@@ -23,22 +21,22 @@ import static enkan.util.HttpResponseUtils.redirect;
  */
 public class RegisterController {
     @Inject
-    TemplateEngine templateEngine;
+    private TemplateEngine templateEngine;
 
     @Inject
-    DomaProvider domaProvider;
+    private DomaProvider domaProvider;
 
-    static final String EMAIL_ALREADY_EXISTS = "このメールアドレスは既に登録されています。";
+    private static final String EMAIL_ALREADY_EXISTS = "このメールアドレスは既に登録されています。";
 
     // 登録画面表示
     @Transactional
-    public HttpResponse index() throws IOException {
+    public HttpResponse index() {
         return templateEngine.render("register", "user", new UserForm());
     }
 
     // ユーザ登録処理
     @Transactional
-    public HttpResponse register(UserForm form, Session session) throws IOException {
+    public HttpResponse register(UserForm form, Session session) {
 
         if (form.hasErrors()) {
             return templateEngine.render("register",

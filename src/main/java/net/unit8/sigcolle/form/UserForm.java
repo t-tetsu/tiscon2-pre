@@ -17,7 +17,7 @@ import org.hibernate.validator.constraints.NotBlank;
 @Data
 public class UserForm extends FormBase {
     @Inject
-    DomaProvider domaProvider;
+    private DomaProvider domaProvider;
 
     @DecimalMin("1")
     @DecimalMax("9999")

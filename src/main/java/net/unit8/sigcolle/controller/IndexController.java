@@ -13,10 +13,10 @@ import net.unit8.sigcolle.model.Campaign;
 
 public class IndexController {
     @Inject
-    TemplateEngine templateEngine;
+    private TemplateEngine templateEngine;
 
     @Inject
-    DomaProvider domaProvider;
+    private DomaProvider domaProvider;
 
     public HttpResponse index() {
         List<Campaign> campaigns = new ArrayList<Campaign>();

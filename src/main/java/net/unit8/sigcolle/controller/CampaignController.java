@@ -1,7 +1,5 @@
 package net.unit8.sigcolle.controller;
 
-import java.io.IOException;
-
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
@@ -28,10 +26,10 @@ import static enkan.util.ThreadingUtils.some;
  */
 public class CampaignController {
     @Inject
-    TemplateEngine templateEngine;
+    private TemplateEngine templateEngine;
 
     @Inject
-    DomaProvider domaProvider;
+    private DomaProvider domaProvider;
 
     private HttpResponse showCampaign(Long campaignId, SignatureForm signature, String message) {
         CampaignDao campaignDao = domaProvider.getDao(CampaignDao.class);
@@ -53,7 +51,7 @@ public class CampaignController {
         );
     }
 
-    public HttpResponse index(CampaignForm form, Flash flash) throws IOException {
+    public HttpResponse index(CampaignForm form, Flash flash) {
         if (form.hasErrors()) {
             return builder(HttpResponse.of("Invalid"))
                     .set(HttpResponse::setStatus, 400)
