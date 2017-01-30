@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.unit8.sigcolle.DomaConfig;
 import net.unit8.sigcolle.model.Campaign;
+import net.unit8.sigcolle.model.CampaignUser;
 import org.seasar.doma.Dao;
 import org.seasar.doma.Insert;
 import org.seasar.doma.Select;
@@ -14,7 +15,7 @@ import org.seasar.doma.Select;
 @Dao(config = DomaConfig.class)
 public interface CampaignDao {
     @Select(ensureResult = true)
-    Campaign selectById(Long campaignId);
+    CampaignUser selectById(Long campaignId);
 
     @Select
     List<Campaign> selectAll();

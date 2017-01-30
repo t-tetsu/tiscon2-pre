@@ -1,7 +1,5 @@
 package net.unit8.sigcolle.controller;
 
-import java.security.Principal;
-
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
