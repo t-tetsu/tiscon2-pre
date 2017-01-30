@@ -2,9 +2,6 @@ package net.unit8.sigcolle.form;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
-import enkan.component.doma2.DomaProvider;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
@@ -14,9 +11,6 @@ import org.hibernate.validator.constraints.NotBlank;
  */
 @Data
 public class LoginForm extends FormBase {
-    @Inject
-    private DomaProvider domaProvider;
-
     @NotBlank
     @Length(max = 50)
     private String email;
