@@ -31,9 +31,7 @@ public class LoginController {
     @Inject
     DomaProvider domaProvider;
 
-    static final String EMAIL_DOES_NOT_EXIST = "このEメールアドレスは登録されていません。";
-
-    static final String PASSWORD_DOES_NOT_MATCH = "登録されているEメールアドレスとパスワードが一致しません。";
+    private static final String INVALID_USERNAME_OR_PASSWORD = "ユーザー名とパスワードが間違っています。もう一度やり直してください。";
 
     // ログイン画面表示
     @Transactional
@@ -56,7 +54,7 @@ public class LoginController {
         try {
             user = userDao.selectByEmail(form.getEmail());
         } catch (NoResultException e) {
-            errors.add("email", EMAIL_DOES_NOT_EXIST);
+            errors.add("error", INVALID_USERNAME_OR_PASSWORD);
             form.setErrors(errors);
             return templateEngine.render("login",
                     "login", form
@@ -65,7 +63,7 @@ public class LoginController {
 
         // パスワードチェック
         if (!form.getPass().equals(user.getPass())) {
-            errors.add("pass", PASSWORD_DOES_NOT_MATCH);
+            errors.add("error", INVALID_USERNAME_OR_PASSWORD);
             form.setErrors(errors);
             return templateEngine.render("login",
                     "login", form
