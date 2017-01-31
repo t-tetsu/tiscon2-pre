@@ -6,16 +6,11 @@ import org.seasar.doma.Dao;
 import org.seasar.doma.Insert;
 import org.seasar.doma.Select;
 
-import java.util.List;
-
 /**
  * @author takahashi
  */
 @Dao(config = DomaConfig.class)
 public interface UserDao {
-    @Select
-    List<User> selectAll();
-
     @Insert
     int insert(User user);
 

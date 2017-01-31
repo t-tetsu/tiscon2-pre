@@ -1,11 +1,11 @@
 package net.unit8.sigcolle.form;
 
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
-
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
 
 /**
  * @author kawasima

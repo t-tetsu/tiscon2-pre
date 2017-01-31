@@ -12,7 +12,6 @@ import enkan.data.Session;
 import kotowari.component.TemplateEngine;
 import net.unit8.sigcolle.auth.LoginPrincipal;
 import net.unit8.sigcolle.dao.UserDao;
-import net.unit8.sigcolle.form.CampaignForm;
 import net.unit8.sigcolle.form.LoginForm;
 import net.unit8.sigcolle.model.User;
 import org.seasar.doma.jdbc.NoResultException;
@@ -35,11 +34,8 @@ public class LoginController {
 
     // ログイン画面表示
     @Transactional
-    public HttpResponse index(CampaignForm form) throws IOException {
-
-        return templateEngine.render("login",
-                "login", new LoginForm()
-        );
+    public HttpResponse index() throws IOException {
+        return templateEngine.render("login", "login", new LoginForm());
     }
 
     // ログイン処理

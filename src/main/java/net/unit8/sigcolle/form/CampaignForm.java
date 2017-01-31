@@ -1,9 +1,9 @@
 package net.unit8.sigcolle.form;
 
-import lombok.Data;
-
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
+
+import lombok.Data;
 
 /**
  * @author kawasima
