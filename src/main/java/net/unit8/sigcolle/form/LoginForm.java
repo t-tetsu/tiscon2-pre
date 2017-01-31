@@ -1,14 +1,14 @@
 package net.unit8.sigcolle.form;
 
+import java.util.List;
+
+import javax.inject.Inject;
+
+import enkan.collection.Multimap;
 import enkan.component.doma2.DomaProvider;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
-
-import javax.inject.Inject;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
-import java.util.List;
 
 /**
  * @author takahashi
@@ -39,5 +39,4 @@ public class LoginForm extends FormBase {
     public List<String> getErrors(String name) {
         return super.getErrors(name);
     }
-
 }
