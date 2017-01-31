@@ -16,10 +16,10 @@ import net.unit8.sigcolle.model.Signature;
  */
 public class SignatureController {
     @Inject
-    TemplateEngine templateEngine;
+    private TemplateEngine templateEngine;
 
     @Inject
-    DomaProvider domaProvider;
+    private DomaProvider domaProvider;
 
     public HttpResponse list(Parameters params) {
         SignatureDao dao = domaProvider.getDao(SignatureDao.class);

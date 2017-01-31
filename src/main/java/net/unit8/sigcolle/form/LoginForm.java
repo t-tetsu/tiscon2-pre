@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.NotBlank;
 @Data
 public class LoginForm extends FormBase {
     @Inject
-    DomaProvider domaProvider;
+    private DomaProvider domaProvider;
 
     @NotBlank
     @Length(max = 50)

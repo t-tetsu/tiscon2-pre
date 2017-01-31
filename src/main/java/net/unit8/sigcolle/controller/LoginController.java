@@ -1,7 +1,5 @@
 package net.unit8.sigcolle.controller;
 
-import java.io.IOException;
-
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
@@ -25,22 +23,22 @@ import static enkan.util.HttpResponseUtils.redirect;
  */
 public class LoginController {
     @Inject
-    TemplateEngine templateEngine;
+    private TemplateEngine templateEngine;
 
     @Inject
-    DomaProvider domaProvider;
+    private DomaProvider domaProvider;
 
     private static final String INVALID_USERNAME_OR_PASSWORD = "ユーザー名とパスワードが間違っています。もう一度やり直してください。";
 
     // ログイン画面表示
     @Transactional
-    public HttpResponse index() throws IOException {
+    public HttpResponse index() {
         return templateEngine.render("login", "login", new LoginForm());
     }
 
     // ログイン処理
     @Transactional
-    public HttpResponse login(LoginForm form, Session session) throws IOException {
+    public HttpResponse login(LoginForm form, Session session) {
 
         UserDao userDao = domaProvider.getDao(UserDao.class);
         User user;
@@ -79,7 +77,7 @@ public class LoginController {
 
     // ログアウト処理
     @Transactional
-    public HttpResponse logout(Session session) throws IOException {
+    public HttpResponse logout(Session session) {
         session.clear();
         return builder(redirect("/", SEE_OTHER))
                 .set(HttpResponse::setSession, session)

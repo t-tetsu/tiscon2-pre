@@ -16,10 +16,10 @@ import org.seasar.doma.Id;
 public class Signature implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long signatureId;
+    private Long signatureId;
 
-    String name;
-    String signatureComment;
+    private String name;
+    private String signatureComment;
 
-    Long campaignId;
+    private Long campaignId;
 }
