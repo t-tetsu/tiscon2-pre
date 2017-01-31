@@ -8,7 +8,7 @@ import org.flywaydb.core.api.migration.jdbc.JdbcMigration;
 /**
  * @author kawasima
  */
-public class V6__InsertUser implements JdbcMigration {
+public class V5__InsertUser implements JdbcMigration {
     @Override
     public void migrate(Connection connection) throws Exception {
         String sql = "INSERT INTO user(user_id, first_name, last_name, email, pass) " +
