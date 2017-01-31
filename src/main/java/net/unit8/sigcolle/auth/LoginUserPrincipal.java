@@ -4,8 +4,10 @@ import enkan.security.UserPrincipal;
 import lombok.Data;
 
 /**
- * ユーザーのログイン情報を保持する.
- * セッションに格納したい情報が増えた時は本クラスにフィールドを追加すること.
+ * ユーザーのログイン認証情報.
+ * enkanの認証機構と連携するために {@link UserPrincipal} を拡張しており、
+ * ログイン認証情報はすべてこのクラスで保持する.
+ * (see also: http://enkan.github.io/guide/authentication.html )
  * @author blackawa
  */
 @Data
