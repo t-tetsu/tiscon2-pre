@@ -14,7 +14,7 @@ import org.seasar.doma.Id;
  */
 @Entity
 @Data
-public class CampaignUser implements Serializable {
+public class UserCampaign implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long campaignId;

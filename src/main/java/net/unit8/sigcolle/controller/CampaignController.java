@@ -11,7 +11,7 @@ import net.unit8.sigcolle.dao.CampaignDao;
 import net.unit8.sigcolle.dao.SignatureDao;
 import net.unit8.sigcolle.form.CampaignForm;
 import net.unit8.sigcolle.form.SignatureForm;
-import net.unit8.sigcolle.model.CampaignUser;
+import net.unit8.sigcolle.model.UserCampaign;
 import net.unit8.sigcolle.model.Signature;
 
 import static enkan.util.BeanBuilder.builder;
@@ -31,7 +31,7 @@ public class CampaignController {
 
     private HttpResponse showCampaign(Long campaignId, SignatureForm signature, String message) {
         CampaignDao campaignDao = domaProvider.getDao(CampaignDao.class);
-        CampaignUser campaign = campaignDao.selectById(campaignId);
+        UserCampaign campaign = campaignDao.selectById(campaignId);
 
         SignatureDao signatureDao = domaProvider.getDao(SignatureDao.class);
         int signatureCount = signatureDao.countByCampaignId(campaignId);
