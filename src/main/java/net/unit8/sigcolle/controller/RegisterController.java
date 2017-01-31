@@ -18,7 +18,7 @@ import static enkan.util.HttpResponseUtils.RedirectStatusCode.SEE_OTHER;
 import static enkan.util.HttpResponseUtils.redirect;
 
 /**
- * Created by tie303856 on 2016/12/14.
+ * @author takahashi
  */
 public class RegisterController {
     @Inject
@@ -29,29 +29,31 @@ public class RegisterController {
 
     private static final String EMAIL_ALREADY_EXISTS = "このメールアドレスは既に登録されています。";
 
-    // 登録画面表示
-    @Transactional
+    /**
+     * ユーザー登録画面表示.
+     * @return HttpResponse
+     */
     public HttpResponse index() {
         return templateEngine.render("register", "user", new UserForm());
     }
 
-    // ユーザ登録処理
+    /**
+     * ユーザー登録処理.
+     * @param form 画面入力されたユーザー情報
+     * @return HttpResponse
+     */
     @Transactional
     public HttpResponse register(UserForm form) {
 
         if (form.hasErrors()) {
-            return templateEngine.render("register",
-                    "user", form
-            );
+            return templateEngine.render("register", "user", form);
         }
 
         UserDao userDao = domaProvider.getDao(UserDao.class);
 
         // メールアドレス重複チェック
         if (userDao.countByEmail(form.getEmail()) != 0) {
-            Multimap errors = Multimap.empty();
-            errors.add("email", EMAIL_ALREADY_EXISTS);
-            form.setErrors(errors);
+            form.setErrors(Multimap.of("email", EMAIL_ALREADY_EXISTS));
             return templateEngine.render("register",
                     "user", form
             );

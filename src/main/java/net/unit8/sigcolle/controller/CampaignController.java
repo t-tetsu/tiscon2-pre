@@ -9,12 +9,10 @@ import enkan.data.HttpResponse;
 import kotowari.component.TemplateEngine;
 import net.unit8.sigcolle.dao.CampaignDao;
 import net.unit8.sigcolle.dao.SignatureDao;
-import net.unit8.sigcolle.dao.UserDao;
 import net.unit8.sigcolle.form.CampaignForm;
 import net.unit8.sigcolle.form.SignatureForm;
-import net.unit8.sigcolle.model.Campaign;
+import net.unit8.sigcolle.model.CampaignUser;
 import net.unit8.sigcolle.model.Signature;
-import net.unit8.sigcolle.model.User;
 
 import static enkan.util.BeanBuilder.builder;
 import static enkan.util.HttpResponseUtils.RedirectStatusCode.SEE_OTHER;
@@ -33,11 +31,7 @@ public class CampaignController {
 
     private HttpResponse showCampaign(Long campaignId, SignatureForm signature, String message) {
         CampaignDao campaignDao = domaProvider.getDao(CampaignDao.class);
-        Campaign campaign = campaignDao.selectById(campaignId);
-
-        UserDao userDao = domaProvider.getDao(UserDao.class);
-        User user = userDao.selectByUserId(campaign.getCreateUserId());
-        String createdBy = user.getLastName() + user.getFirstName();
+        CampaignUser campaign = campaignDao.selectById(campaignId);
 
         SignatureDao signatureDao = domaProvider.getDao(SignatureDao.class);
         int signatureCount = signatureDao.countByCampaignId(campaignId);
@@ -46,11 +40,16 @@ public class CampaignController {
                 "campaign", campaign,
                 "signatureCount", signatureCount,
                 "signature", signature,
-                "message", message,
-                "createdBy", createdBy
+                "message", message
         );
     }
 
+    /**
+     * キャンペーン詳細画面表示.
+     * @param form URLパラメータ
+     * @param flash flash scope session
+     * @return HttpResponse
+     */
     public HttpResponse index(CampaignForm form, Flash flash) {
         if (form.hasErrors()) {
             return builder(HttpResponse.of("Invalid"))
@@ -63,6 +62,11 @@ public class CampaignController {
                 (String) some(flash, Flash::getValue).orElse(null));
     }
 
+    /**
+     * 署名の追加処理.
+     * @param form 画面入力された署名情報.
+     * @return HttpResponse
+     */
     @Transactional
     public HttpResponse sign(SignatureForm form) {
         if (form.hasErrors()) {
@@ -81,10 +85,18 @@ public class CampaignController {
                 .build();
     }
 
+    /**
+     * 新規キャンペーン作成画面表示.
+     * @return HttpResponse
+     */
     public HttpResponse createForm() {
         return templateEngine.render("signature/new");
     }
 
+    /**
+     * 新規キャンペーン作成処理.
+     * @return HttpResponse
+     */
     public HttpResponse create() {
         // TODO: create campaign
         return builder(redirect("/", SEE_OTHER)).build();

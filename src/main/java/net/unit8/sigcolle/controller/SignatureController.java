@@ -21,6 +21,11 @@ public class SignatureController {
     @Inject
     private DomaProvider domaProvider;
 
+    /**
+     * 署名リスト画面表示.
+     * @param params URLパラメータ
+     * @return HttpResponse
+     */
     public HttpResponse list(Parameters params) {
         SignatureDao dao = domaProvider.getDao(SignatureDao.class);
         List<Signature> signatures = dao.selectAllByCampaignId(params.getLong("campaignId"));

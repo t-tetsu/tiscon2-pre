@@ -18,7 +18,7 @@ import static enkan.util.BeanBuilder.builder;
 /**
  * @author kawasima
  */
-public class MyExampleSystemFactory implements EnkanSystemFactory {
+public class SigColleSystemFactory implements EnkanSystemFactory {
     @Override
     public EnkanSystem create() {
         return EnkanSystem.of(
@@ -28,7 +28,7 @@ public class MyExampleSystemFactory implements EnkanSystemFactory {
                 "template", new ThymeleafTemplateEngine(),
                 "datasource", new HikariCPComponent(OptionMap.of("uri",
                         Env.getString("DB_URL", "jdbc:h2:mem:test"))),
-                "app", new ApplicationComponent("net.unit8.sigcolle.MyApplicationFactory"),
+                "app", new ApplicationComponent("net.unit8.sigcolle.SigColleApplicationFactory"),
                 "http", builder(new UndertowComponent())
                         .set(UndertowComponent::setPort, Env.getInt("PORT", 3000))
                         .build()

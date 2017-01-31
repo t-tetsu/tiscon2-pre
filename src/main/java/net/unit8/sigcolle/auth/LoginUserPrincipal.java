@@ -6,7 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * ユーザーのログイン情報を保持する主体クラス.
+ * ユーザーのログイン情報を保持する.
+ * セッションに格納したい情報が増えた時は本クラスにフィールドを追加すること.
  * @author blackawa
  */
 @Data

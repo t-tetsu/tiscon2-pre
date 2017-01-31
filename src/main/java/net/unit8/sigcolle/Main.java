@@ -7,7 +7,7 @@ import enkan.system.EnkanSystem;
  */
 public class Main {
     public static void main(String[] args) {
-        EnkanSystem system = new MyExampleSystemFactory().create();
+        EnkanSystem system = new SigColleSystemFactory().create();
         Runtime.getRuntime().addShutdownHook(new Thread(system::stop));
         system.start();
     }
