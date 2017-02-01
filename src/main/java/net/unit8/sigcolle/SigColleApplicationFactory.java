@@ -56,7 +56,7 @@ import static enkan.util.Predicates.path;
 /**
  * @author [It's you]
  */
-public class MyApplicationFactory implements ApplicationFactory {
+public class SigColleApplicationFactory implements ApplicationFactory {
     @Override
     public Application create(ComponentInjector injector) {
         WebApplication app = new WebApplication();

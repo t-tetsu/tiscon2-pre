@@ -1,23 +1,16 @@
 package net.unit8.sigcolle.form;
 
-import enkan.component.doma2.DomaProvider;
+import java.util.List;
+
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
-
-import javax.inject.Inject;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
-import java.util.List;
 
 /**
  * @author takahashi
  */
 @Data
 public class LoginForm extends FormBase {
-    @Inject
-    DomaProvider domaProvider;
-
     @NotBlank
     @Length(max = 50)
     private String email;
@@ -39,5 +32,4 @@ public class LoginForm extends FormBase {
     public List<String> getErrors(String name) {
         return super.getErrors(name);
     }
-
 }

@@ -1,15 +1,15 @@
 package net.unit8.sigcolle.form;
 
-import enkan.component.doma2.DomaProvider;
-import lombok.Data;
-import net.unit8.sigcolle.dao.UserDao;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotBlank;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
-import java.util.List;
+
+import enkan.component.doma2.DomaProvider;
+import lombok.Data;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * @author takahashi
@@ -17,7 +17,7 @@ import java.util.List;
 @Data
 public class UserForm extends FormBase {
     @Inject
-    DomaProvider domaProvider;
+    private DomaProvider domaProvider;
 
     @DecimalMin("1")
     @DecimalMax("9999")
@@ -37,10 +37,6 @@ public class UserForm extends FormBase {
 
     @Length(min = 4, max = 20)
     private String pass;
-
-    public Long getUserIdLong() {
-        return Long.parseLong(userId);
-    }
 
     @Override
     public boolean hasErrors() {

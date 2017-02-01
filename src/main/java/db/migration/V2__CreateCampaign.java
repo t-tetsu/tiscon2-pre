@@ -1,14 +1,14 @@
 package db.migration;
 
-import org.flywaydb.core.api.migration.jdbc.JdbcMigration;
-
 import java.sql.Connection;
 import java.sql.Statement;
+
+import org.flywaydb.core.api.migration.jdbc.JdbcMigration;
 
 /**
  * @author kawasima
  */
-public class V1__CreateCampaign implements JdbcMigration {
+public class V2__CreateCampaign implements JdbcMigration {
     @Override
     public void migrate(Connection connection) throws Exception {
         try (Statement stmt = connection.createStatement()) {
@@ -17,7 +17,8 @@ public class V1__CreateCampaign implements JdbcMigration {
                     "title VARCHAR(30) NOT NULL," +
                     "statement CLOB NOT NULL," +
                     "goal INTEGER," +
-                    "create_user_id INTEGER NOT NULL" +
+                    "create_user_id INTEGER NOT NULL," +
+                    "FOREIGN KEY (create_user_id) REFERENCES user(user_id)" +
                     ")"
             );
         }

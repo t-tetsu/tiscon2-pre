@@ -1,10 +1,10 @@
 package net.unit8.sigcolle.form;
 
-import kotowari.data.Validatable;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+
+import kotowari.data.Validatable;
 
 /**
  * @author kawasima

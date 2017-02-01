@@ -9,21 +9,27 @@ import org.seasar.doma.GenerationType;
 import org.seasar.doma.Id;
 
 /**
- * @author kawasima
+ * campaignテーブルとuserテーブル両方から値を受け取るDTO.
+ * @author blackawa
  */
 @Entity
 @Data
-public class Campaign implements Serializable {
+public class UserCampaign implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long campaignId;
-
     private String title;
-
-    // Markdown description
     private String statement;
-
     private Long goal;
-
     private Long createUserId;
+    private String firstName;
+    private String lastName;
+
+    /**
+     * キャンペーンの作成者名を返却する.
+     * @return キャンペーンの作成者名
+     */
+    public String getCreatorName() {
+        return lastName + " " + firstName;
+    }
 }
