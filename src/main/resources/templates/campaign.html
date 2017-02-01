@@ -12,12 +12,12 @@ xmlns:th="http://www.thymeleaf.org">
     <div class="ui fixed menu">
         <div class="ui container">
             <a href="/" class="header item logo">SIG COLLE</a>
-            <div class="right menu" th:if="(${session} == null) or (${session.name} == null)">
+            <div class="right menu" th:if="(${session} == null) or (${session.principal} == null)">
                 <a href="/login" class="header item">ログイン</a>
                 <a href="/register" class="header item">ユーザ登録</a>
             </div>
-            <div class="right menu" th:unless="((${session} == null) or (${session.name} == null))">
-                <span class="header item"><span th:text="${session.name}">name</span>　さん</span>
+            <div class="right menu" th:unless="((${session} == null) or (${session.principal} == null))">
+                <span class="header item"><span th:text="${session.principal.userName}">name</span>　さん</span>
                 <a href="/logout" class="header item">ログアウト</a>
             </div>
         </div>
@@ -27,7 +27,7 @@ xmlns:th="http://www.thymeleaf.org">
             <div class="ui information container">
                 <h1 class="ui center aligned header" th:text="${campaign.title}">Sign title</h1>
                 <div class="ui center aligned header">
-                    <a th:text="${createdBy}">Created by</a>
+                    <a th:text="${campaign.creatorName}">Created by</a>
                 </div>
                 <div class="ui positive message" th:if="${message != null}">
                     <div class="header" th:text="${message}">Thank you</div>
@@ -45,9 +45,9 @@ xmlns:th="http://www.thymeleaf.org">
                         </div>
                         <p><span th:text="${campaign.goal}">1000</span>人まで残り<span th:text="${campaign.goal - signatureCount}">1</span>人の賛同者が必要です！</p>
                         <form class="ui form" method="post" action="/campaign/1"
-                        th:action="@{~/campaign/{id}(id=${campaign.campaignId})}">
+                              th:action="@{~/campaign/{id}(id=${campaign.campaignId})}">
                             <div class="field" th:classappend="${signature.hasErrors('name')}?'error'">
-                                <input type="text" name="name" placeholder="氏名" th:value="!${(session == null) or (session.name == null)}?${session.name}"/>
+                                <input type="text" name="name" placeholder="氏名" th:value="!${(session == null) or (session.principal == null)} ? ${session.principal.userName}"/>
                             </div>
                             <div class="field" th:classappend="${signature.hasErrors('signatureComment')}?'error'">
                                 <label>コメント(任意)</label>

@@ -1,14 +1,14 @@
 package db.migration;
 
-import org.flywaydb.core.api.migration.jdbc.JdbcMigration;
-
 import java.sql.Connection;
 import java.sql.Statement;
+
+import org.flywaydb.core.api.migration.jdbc.JdbcMigration;
 
 /**
  * @author kawasima
  */
-public class V3__CreateSignatureAttribute implements JdbcMigration {
+public class V4__CreateSignatureAttribute implements JdbcMigration {
     @Override
     public void migrate(Connection connection) throws Exception {
         try (Statement stmt = connection.createStatement()) {
