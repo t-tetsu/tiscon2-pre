@@ -31,7 +31,7 @@ T社のエンジニアが作ったアプリは
 [【tiscon2-startup-guide】](https://github.com/tiscon/tiscon2-startup-guide)
 
 ローカル上での動作確認まで終わったら、オンライン上での動作確認をします。  
-Herokuにログインした状態で、下のDeployボタンを押下してください。  
+Herokuにログインした状態で、下のDeploy to Herokuボタンを押下してください。  
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)  
 
