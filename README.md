@@ -35,7 +35,7 @@ Herokuにログインした状態で、下のDeployボタンを押下してく�
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)  
 
-HerokuのDeployページが開くので、画面のDeploy for Freeボタンを押下してください。  
+HerokuのDeployページが開くので、画面のDeployボタンを押下してください。  
 その際、App Name (optional)及びRuntime Selectionの項目を入力・変更する必要はありません。  
 (TISCONアプリケーションがHeroku上でビルド・動作します。)  
 
